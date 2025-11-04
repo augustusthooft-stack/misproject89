@@ -1,0 +1,82 @@
+/* Accessible, larger, and softer Blackjack stylesheet
+- Bigger typography, larger buttons and chips
+- Improved spacing and contrast for readability
+- Touch-friendly controls and responsive layout
+- Gentle visual focus states and reduced clutter for grading clarity
+Save as css/style.css (replace existing). */
+
+:root{
+--bg-1: #051418; /* deep teal */
+--bg-2: #08323a; /* secondary */
+--panel: rgba(255,255,255,0.04);
+--muted: rgba(255,255,255,0.72);
+--accent-1: #00bfa5; /* teal */
+--accent-2: #00a6ff; /* blue */
+--card-white: #fffdf8;
+--danger: #b71c1c;
+--rounded: 14px;
+}
+
+/* Base reset & typography */
+* { box-sizing: border-box; }
+html,body{ height:100%; margin:0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: linear-gradient(180deg,var(--bg-1), var(--bg-2)); color: var(--card-white); }
+body{ -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+/* Navigation */
+nav{ background: rgba(0,0,0,0.35); padding:14px 20px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+nav ul{ display:flex; gap:14px; list-style:none; align-items:center; margin:0; padding:0; flex-wrap:wrap; }
+nav a{ color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:10px; font-weight:600; font-size:1rem; }
+nav a:hover, nav a:focus{ background: rgba(255,255,255,0.03); color: #e9fbff; outline:none; }
+
+/* Container */
+.game-container{ max-width:1200px; margin:28px auto; padding:20px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius: var(--rounded); box-shadow: 0 18px 50px rgba(0,0,0,0.6); }
+.game-header{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; }
+.game-header h1{ font-size:2rem; letter-spacing:0.6px; margin:0; color:#dff8ff; }
+.balance{ background: rgba(0,0,0,0.25); padding:10px 16px; border-radius:12px; color:#bff1ff; font-weight:700; font-size:1.05rem; }
+
+/* Table area layout */
+.table-area{ display:grid; grid-template-columns: 1fr 420px 1fr; gap:20px; align-items:start; }
+.dealer-area, .player-area, .controls-area{ background: var(--panel); padding:16px; border-radius:12px; min-height:200px; }
+.dealer-area h2, .player-area h2{ margin:0 0 10px 0; font-size:1.15rem; color:#e8fbff; }
+
+/* Cards */
+.cards{ display:flex; gap:12px; min-height:84px; align-items:flex-end; }
+.card{ width: 84px; height:120px; border-radius:12px; background: var(--card-white); color:#111; display:flex; flex-direction:column; justify-content:space-between; padding:8px; box-shadow: 0 10px 30px rgba(0,0,0,0.55); transform: translateY(0); transition: transform 180ms ease, box-shadow 180ms ease; font-weight:700; }
+.card .top, .card .bottom{ font-size:16px; }
+.card .center{ font-size:28px; display:flex; align-items:center; justify-content:center; height:64px; }
+.card.face-down{ background: linear-gradient(135deg,#0b3040 0%, #06607a 100%); color: transparent; display:flex; align-items:center; justify-content:center; }
+.card.reveal{ transform: translateY(-10px); box-shadow: 0 18px 40px rgba(0,0,0,0.6); }
+
+/* Larger hand value text */
+.hand-value{ margin-top:10px; color:#dff8ff; font-weight:800; font-size:1.05rem; }
+
+/* Controls */
+.controls-area{ display:flex; flex-direction:column; gap:14px; align-items:center; justify-content:flex-start; text-align:center; }
+.bet-controls{ display:flex; flex-direction:column; gap:12px; align-items:center; }
+.bet-controls label{ font-weight:700; color:#e6fbff; font-size:1.05rem; }
+.bet-controls input[type="number"]{ width:140px; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.03); color:inherit; font-size:1rem; font-weight:700; }
+
+/* Chips — bigger and reachable */
+.chips{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+.chip{ background: rgba(255,255,255,0.06); border:none; padding:12px 14px; border-radius:12px; cursor:pointer; color:inherit; font-weight:800; font-size:1rem; min-width:64px; }
+.chip:hover, .chip:focus{ transform: translateY(-4px); outline:none; }
+
+/* Buttons — touch friendly */
+.action-controls{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+.btn{ padding:12px 16px; border-radius:12px; border:none; cursor:pointer; background: rgba(255,255,255,0.03); color: #e8fbff; min-width:110px; font-weight:800; font-size:1rem; }
+.btn:disabled{ opacity:0.38; cursor:not-allowed; }
+.btn.primary{ background: linear-gradient(90deg,var(--accent-1), var(--accent-2)); color:#001; box-shadow: 0 8px 18px rgba(0,0,0,0.45); }
+
+/* Messages */
+.messages{ min-height:36px; color:#fff6d9; font-weight:800; margin-top:6px; font-size:1rem; }
+
+/* Player area */
+.player-area{ display:flex; flex-direction:column; gap:12px; }
+.hand-block{ background: rgba(0,0,0,0.08); padding:12px; border-radius:12px; }
+.hand-label{ font-size:1rem; margin-bottom:8px; color:#cfeff6; font-weight:800; }
+.hidden{ display:none; }
+
+/* Footer small text */
+.small{ color: #bfe0ee; font-size:0.95rem; margin-top:12px; }
+
+/* Focus states for accessibility */
